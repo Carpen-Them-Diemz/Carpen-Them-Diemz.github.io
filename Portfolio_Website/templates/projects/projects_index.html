@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+</head>
+<body>
+    <main>
+        {% block page_content %}
+        <div class="container d-flex justify-content-center" style="margin-bottom: 15px; margin-top: 2px;">
+            <h1 style="font-size: 60px;"><b>Portfolio Projects</b></h1><br>
+        </div>
+        <div class="container d-flex justify-content-center">
+            <h4 style="font-size: 35px; margin-top: 10px;"><b>Web Development/Django</b></h4>
+        </div>
+        <div class="container d-flex justify-content-center" style="margin-bottom: 10px;">
+            <h6><b>My Web Dev projects including this site itself (site is work in progress, literally started learning Django 5/20/2023)</b></h6>
+        </div>
+        <div class='row'>
+            {% for project in projects %}
+            <div class='col-md-4'>
+                <div class='card mb-2'>
+                    <img class='card-img-top' src='{% static project.image %}' style='max-height: 450px'>
+                    <div class='card-body'>
+                        <h5 class='card-title'>{{ project.title }}</h5>
+                        <p class='card-text'>{{ project.description }}</p>
+                        <a class='btn btn-primary' href="{% url 'projects:project_details' project_type=project.project_type pk=project.pk %}">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="container d-flex justify-content-center">
+            <h3 style="font-size: 35px;"><b>AI/Machine Learning</b></h3><br>
+        </div>
+        <div class="container d-flex justify-content-center" style="margin-bottom: 10px;">
+            <h6><b>My AI engineering/Machine Learning/Deep Learning and Data Science projects.</b></h6>
+        </div>
+        <div class="row">
+            {% for project in ai_projects %}
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <img class="card-img-top img-fluid" alt='Responsive-image' src="{% static project.image %}" style="max-height: 450px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.description }}</p>
+                        <a class="btn btn-primary" href="{% url 'projects:project_details' project_type=project.project_type pk=project.pk %}">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endblock %}
+    </main>
+</body>
+</html>

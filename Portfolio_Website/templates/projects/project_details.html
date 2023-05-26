@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Details</title>
+</head>
+<body>
+    <main>
+        {% block page_content %}
+        <h1 class="container text-center">{{ project.title }}</h1>
+        <div class='row'>
+            <div class='col-md-8'>
+                <img src="{% static project.image %}" class="img-fluid" alt="Responsive image" style='width: 1200px; height: 800px;'>
+            </div>
+            <div class='col-md-4'>
+                <h5>About the project:</h5>
+                <p>{{ project.description }}</p>
+                <br>
+                <h5>Technology used:</h5>
+                <p>{{ project.technology }}</p>
+                {% if project.project_type == 'Machine Learning' %}
+                {% endif %}
+            </div>
+        </div>
+        {% endblock %}
+    </main>
+</body>
+</html>
